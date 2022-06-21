@@ -1,0 +1,50 @@
+scanl :: (a -> b -> a) -> a -> [b] -> [a] 
+scanl f q ls =
+    q : (case ls of 
+        [] ->[]
+        x:xs -> scanl f (f q x) xs)
+
+fibs = 1 : scanl (+) 1 fibs
+
+scanl (+) 1 fibs = 
+f = (+); q = 1; ls = fibs (x:xs = 1 : scanl (+) 1 fibs)   
+    1 : scanl (+) ((+) 1 1 = 2) (scanl (+) 1 fibs)
+=   1 : scanl (+) 2 (scanl (+) 1 fibs)
+
+bringing it back:
+
+fibs = 1 : 1 : scanl (+) 2 (scanl (+) 1 fibs)
+
+scanl (+) 1 fibs = 1 : scanl (+) 2 (scanl (+) 1 fibs)
+
+for scanl (+) 2 (scanl (+) 1 fibs)
+f = (+); q = 2; ls = scanl (+) 1 fibs (= 1 : scanl (+) 2 (scanl (+) 1 fibs))
+=   2 : scanl (+) ((+) 2 1) scanl (+) 2 (scanl (+) 1 fibs)
+=   2 : scanl (+) 3 (scanl (+) 2 (scanl (+) 1 fibs))
+
+bringing it back to fibs:
+
+fibs = 1 : 1 : 2  : scanl (+) 3 (scanl (+) 2 (scanl (+) 1 fibs))
+
+for scanl (+) 3 (scanl (+) 2 (scanl (+) 1 fibs))
+f = (+); q = 3; ls = (scanl (+) 2 (scanl (+) 1 fibs))
+for ls, x = 2, xs = scanl (+) 3 (scanl (+) 2 (scanl (+) 1 fibs)) (see line 23)
+=  3 : scanl (+) ((+) 3 2) scanl (+) 3 (scanl (+) 2 (scanl (+) 1 fibs))
+=  3 : scanl (+) 5 scanl (+) 3 (scanl (+) 2 (scanl (+) 1 fibs))
+
+bringing it back to fibs:
+
+fibs = 1 : 1 : 2 : 3 : scanl (+) 5 scanl (+) 3 (scanl (+) 2 (scanl (+) 1 fibs))
+
+for scanl (+) 5 scanl (+) 3 (scanl (+) 2 (scanl (+) 1 fibs))
+f = (+); q = 5; ls = scanl (+) 3 (scanl (+) 2 (scanl (+) 1 fibs))
+for ls, x = 3, xs = scanl (+) 5 scanl (+) 3 (scanl (+) 2 (scanl (+) 1 fibs)) (see line 33)
+
+= 5 : scanl ((+) 5 3) (scanl (+) 5 scanl (+) 3 (scanl (+) 2 (scanl (+) 1 fibs)))
+= 5 : scanl 8 (scanl (+) 5 scanl (+) 3 (scanl (+) 2 (scanl (+) 1 fibs)))
+
+bringing it back to fibs:
+
+fibs = 1 : 1 : 2 : 3 : 5 : scanl 8 (scanl (+) 5 scanl (+) 3 (scanl (+) 2 (scanl (+) 1 fibs)))
+
+you can see it the pattern emerge.
