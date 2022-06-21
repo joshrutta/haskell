@@ -39,7 +39,6 @@ fibs = 1 : 1 : 2 : 3 : scanl (+) 5 scanl (+) 3 (scanl (+) 2 (scanl (+) 1 fibs))
 for scanl (+) 5 scanl (+) 3 (scanl (+) 2 (scanl (+) 1 fibs))
 f = (+); q = 5; ls = scanl (+) 3 (scanl (+) 2 (scanl (+) 1 fibs))
 for ls, x = 3, xs = scanl (+) 5 scanl (+) 3 (scanl (+) 2 (scanl (+) 1 fibs)) (see line 33)
-
 = 5 : scanl ((+) 5 3) (scanl (+) 5 scanl (+) 3 (scanl (+) 2 (scanl (+) 1 fibs)))
 = 5 : scanl 8 (scanl (+) 5 scanl (+) 3 (scanl (+) 2 (scanl (+) 1 fibs)))
 
