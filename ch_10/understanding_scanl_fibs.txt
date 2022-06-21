@@ -46,4 +46,4 @@ bringing it back to fibs:
 
 fibs = 1 : 1 : 2 : 3 : 5 : scanl 8 (scanl (+) 5 scanl (+) 3 (scanl (+) 2 (scanl (+) 1 fibs)))
 
-you can see it the pattern emerge.
+you can see the pattern emerge
