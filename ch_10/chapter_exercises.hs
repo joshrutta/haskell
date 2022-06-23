@@ -61,11 +61,11 @@ myOr4 = foldr (||) False
 -- 2 
 -- direct recursion not using (||)
 myAny1 :: (a -> Bool) -> [a] -> Bool
-myAny1 f [] = False
+myAny1 f [] = False 
 myAny1 f (x:xs) = if f x then True else myAny1 f xs
 -- direct recursion using (||)
 myAny2 :: (a -> Bool) -> [a] -> Bool
-myAny2 f [] = False
+myAny2 f [] = False 
 myAny2 f (x:xs) = f x || myAny2 f xs
 -- fold, not point-free in folding function
 myAny3 :: (a -> Bool) -> [a] -> Bool
