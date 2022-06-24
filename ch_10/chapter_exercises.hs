@@ -135,3 +135,38 @@ squish2 = foldr (\x y -> x ++ y) []
 -- using fold point free
 squish3 :: [[a]] -> [a]
 squish3 = foldr (++) []
+-- 8
+-- recursive
+squishMap1 :: (a -> [b]) -> [a] -> [b]
+squishMap1 f [] = []
+squishMap1 f (x:xs) = f x ++ squishMap1 f xs
+-- using foldr
+squishMap2 :: (a -> [b]) -> [a] -> [b]
+squishMap2 f = foldr (\a b -> f a ++ b) []
+-- using foldr w point free folding function
+squishMap3 :: (a -> [b]) -> [a] -> [b]
+squishMap3 f = foldr ((++) . f) []
+-- 9 
+-- can use any squishMaps, pretty trivial
+squishAgain :: [[a]] -> [a]
+squishAgain = squishMap3 id 
+-- 10
+-- recursive
+myMaximumBy1 :: (a -> a -> Ordering) -> [a] -> a
+myMaximumBy1 f (x : xs) = go f (x : xs) x
+  where
+    go f [] max = max
+    go f (x : xs) max = if f x max == GT then go f xs x else go f xs max
+-- using foldr
+myMaximumBy2 :: (a -> a -> Ordering) -> [a] -> a
+myMaximumBy2 f (x:xs) = foldr (\a b -> if f a b == GT then a else b) x (x:xs)
+-- 11
+-- recursive
+myMinimumBy1 :: (a -> a -> Ordering) -> [a] -> a
+myMinimumBy1 f (x : xs) = go f (x : xs) x
+  where
+    go f [] max = max
+    go f (x : xs) max = if f x max == LT then go f xs x else go f xs max
+-- using foldr
+myMinimumBy2 :: (a -> a -> Ordering) -> [a] -> a
+myMinimumBy2 f (x:xs) = foldr (\a b -> if f a b == LT then a else b) x (x:xs)
