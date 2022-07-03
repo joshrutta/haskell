@@ -7,7 +7,8 @@ import Data.Char
 shiftLetter :: Int -> Char -> Char
 shiftLetter shift letter
   | isUpper letter = chr ((ord letter + shift - 65) `mod` 26 + 65)
-  | otherwise = chr ((ord letter + shift - 97) `mod` 26 + 97)
+  | isLower letter = chr ((ord letter + shift - 97) `mod` 26 + 97)
+  | otherwise = letter
 
 caesar :: String -> Int -> String
 caesar xs key = map (shiftLetter key) xs
