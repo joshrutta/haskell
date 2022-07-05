@@ -1,8 +1,12 @@
+{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
+
+{-# HLINT ignore "Use newtype instead of data" #-}
 module ChapterExercises where
 
 import Cipher
 import Data.Char
-import Data.List (intercalate)
+import Data.Function (on)
+import Data.List (elemIndex, groupBy, intercalate, maximumBy)
 
 {-
 Multiple Choice
@@ -85,3 +89,92 @@ wordsWhen p s = case dropWhile p s of
 capitalizeParagraph :: String -> String
 capitalizeParagraph [] = []
 capitalizeParagraph sentence = intercalate "." $ map capitalizeWord $ wordsWhen (== '.') sentence
+
+-- Phone exercise
+
+-- 1.
+type Digit = Char
+
+type Presses = Int
+
+newtype DaPhone = DaPhone [Button]
+
+data Button = Button
+  { digit :: Digit,
+    characters :: String
+  }
+
+phone :: DaPhone
+phone =
+  DaPhone
+    [ Button '1' "1",
+      Button '2' "abc2",
+      Button '3' "def3",
+      Button '4' "ghi4",
+      Button '5' "jkl5",
+      Button '6' "mno6",
+      Button '7' "pqrs7",
+      Button '8' "tuv8",
+      Button '9' "wxyz9",
+      Button '*' "^*",
+      Button '0' "+ 0",
+      Button '#' ".,#"
+    ]
+
+-- 2.
+
+convo :: [String]
+convo =
+  [ "Wanna play 20 questions",
+    "Ya",
+    "U 1st haha",
+    "Lol ok. Have u ever tasted alcohol",
+    "Lol ya",
+    "Wow ur cool haha. Ur turn",
+    "Ok. Do u think I am pretty Lol",
+    "Lol ya",
+    "Just making sure rofl ur turn"
+  ]
+
+getMaybeIndex :: Maybe Int -> Int
+getMaybeIndex Nothing = -1
+getMaybeIndex (Just x) = x
+
+reverseTaps :: DaPhone -> Char -> [(Digit, Presses)]
+reverseTaps phone@(DaPhone (x : xs)) c
+  | isUpper c = ('*', 1) : reverseTaps phone (toLower c)
+  | c `elem` characters x = [(digit x, getMaybeIndex (elemIndex c (characters x)) + 1)]
+  | otherwise = reverseTaps (DaPhone xs) c
+
+messageToTaps = concatMap $ reverseTaps phone
+
+messagesToTaps :: DaPhone -> [String] -> [[(Digit, Presses)]]
+messagesToTaps phone = map messageToTaps
+
+-- 3
+
+getPresses (digit, presses) = presses
+
+fingerTaps :: [(Digit, Presses)] -> Presses
+fingerTaps =
+  foldr
+    (\(digit1, presses1) presses2 -> presses1 + presses2)
+    0
+
+fingerTaps2 :: [(Digit, Presses)] -> Presses
+fingerTaps2 =
+  foldr
+    ((+) . snd)
+    0
+
+-- 4
+
+-- using groupBy bc the question didn't specify
+-- if cap letters are distinct from lower case
+
+mostPopularLetter :: String -> Char
+mostPopularLetter =
+  snd $
+    maximumBy (compare `on` fst) $
+      map (\group@(x : xs) -> (length group, x)) $
+        groupBy (\x y -> toUpper x == toUpper y)
