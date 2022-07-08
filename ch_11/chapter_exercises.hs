@@ -6,7 +6,7 @@ module ChapterExercises where
 import Cipher
 import Data.Char
 import Data.Function (on)
-import Data.List (elemIndex, groupBy, intercalate, maximumBy)
+import Data.List (elemIndex, groupBy, group, intercalate, maximumBy, sort)
 
 {-
 Multiple Choice
@@ -170,11 +170,39 @@ fingerTaps2 =
 -- 4
 
 -- using groupBy bc the question didn't specify
--- if cap letters are distinct from lower case
+-- if cap letters are distinct from lower case, 
+-- so made it ignore caps. Can make it not ignore caps by using group
+
+mostPopularLetterWithFrequency :: String -> (Int, Char)
+mostPopularLetterWithFrequency message = maximumBy (compare `on` fst) $
+                                    map (\group@(x : xs) -> (length group, x)) $
+                                      groupBy (\a b -> toUpper a == toUpper b) $ sort $ concat $ words message
 
 mostPopularLetter :: String -> Char
-mostPopularLetter =
-  snd $
-    maximumBy (compare `on` fst) $
-      map (\group@(x : xs) -> (length group, x)) $
-        groupBy (\x y -> toUpper x == toUpper y)
+mostPopularLetter message = snd $ mostPopularLetterWithFrequency message
+
+coolestLtr :: [String] -> Char
+coolestLtr messages = mostPopularLetter $ concat messages
+
+mostPopularWordWithFrequency :: String -> (Int, String)
+mostPopularWordWithFrequency message = maximumBy (compare `on` fst) $
+                                    map (\wordGroup@(x:xs) -> (length wordGroup, x)) $ group $ sort $ words message
+
+coolestWord :: [String] -> String
+coolestWord messages = snd $ mostPopularWordWithFrequency $ unwords messages
+
+-- Hutton's Razor
+
+--1 
+
+data Expr = Lit Integer | Add Expr Expr 
+
+eval :: Expr -> Integer 
+eval (Lit x) = x 
+eval (Add x y) = eval x + eval y
+
+--2 
+
+printExpr :: Expr -> String 
+printExpr (Lit x) = show x
+printExpr (Add x y) = printExpr x ++ " + " ++ printExpr y
