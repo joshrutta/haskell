@@ -223,15 +223,6 @@ betterIterate f a = myUnfoldr (\b -> Just (b, f b)) a
 
 -- Finally something other than a list!
 
-fst' :: (a, b, c) -> a
-fst' (x, _, _) = x
-
-snd' :: (a, b, c) -> b
-snd' (_, x, _) = x
-
-thrd :: (a, b, c) -> c
-thrd (_, _, x) = x
-
 data BinaryTree a
   = Leaf
   | Node (BinaryTree a) a (BinaryTree a)
