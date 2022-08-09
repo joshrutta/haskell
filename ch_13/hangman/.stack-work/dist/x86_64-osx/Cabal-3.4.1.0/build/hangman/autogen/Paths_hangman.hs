@@ -30,12 +30,12 @@ version :: Version
 version = Version [0,1,0,0] []
 bindir, libdir, dynlibdir, datadir, libexecdir, sysconfdir :: FilePath
 
-bindir     = "/Users/jrutta/Desktop/personal/haskell_programming_from_first_principals/ch_13/hangman/.stack-work/install/x86_64-osx/279550c7f58cf574ded9af048f08006ea5fc9d80a046be580dcb63ecb2c4ce87/9.0.2/bin"
-libdir     = "/Users/jrutta/Desktop/personal/haskell_programming_from_first_principals/ch_13/hangman/.stack-work/install/x86_64-osx/279550c7f58cf574ded9af048f08006ea5fc9d80a046be580dcb63ecb2c4ce87/9.0.2/lib/x86_64-osx-ghc-9.0.2/hangman-0.1.0.0-88xaTjG8dATCEtzwEEA9HH-hangman"
-dynlibdir  = "/Users/jrutta/Desktop/personal/haskell_programming_from_first_principals/ch_13/hangman/.stack-work/install/x86_64-osx/279550c7f58cf574ded9af048f08006ea5fc9d80a046be580dcb63ecb2c4ce87/9.0.2/lib/x86_64-osx-ghc-9.0.2"
-datadir    = "/Users/jrutta/Desktop/personal/haskell_programming_from_first_principals/ch_13/hangman/.stack-work/install/x86_64-osx/279550c7f58cf574ded9af048f08006ea5fc9d80a046be580dcb63ecb2c4ce87/9.0.2/share/x86_64-osx-ghc-9.0.2/hangman-0.1.0.0"
-libexecdir = "/Users/jrutta/Desktop/personal/haskell_programming_from_first_principals/ch_13/hangman/.stack-work/install/x86_64-osx/279550c7f58cf574ded9af048f08006ea5fc9d80a046be580dcb63ecb2c4ce87/9.0.2/libexec/x86_64-osx-ghc-9.0.2/hangman-0.1.0.0"
-sysconfdir = "/Users/jrutta/Desktop/personal/haskell_programming_from_first_principals/ch_13/hangman/.stack-work/install/x86_64-osx/279550c7f58cf574ded9af048f08006ea5fc9d80a046be580dcb63ecb2c4ce87/9.0.2/etc"
+bindir     = "/Users/joshrutta/Desktop/haskell/haskell_from_first_principals/ch_13/hangman/.stack-work/install/x86_64-osx/4bab7ef942a45e6a3b0b4719ffbd830cf5b98e16340bf2150678db5f73d751a8/9.0.2/bin"
+libdir     = "/Users/joshrutta/Desktop/haskell/haskell_from_first_principals/ch_13/hangman/.stack-work/install/x86_64-osx/4bab7ef942a45e6a3b0b4719ffbd830cf5b98e16340bf2150678db5f73d751a8/9.0.2/lib/x86_64-osx-ghc-9.0.2/hangman-0.1.0.0-88xaTjG8dATCEtzwEEA9HH-hangman"
+dynlibdir  = "/Users/joshrutta/Desktop/haskell/haskell_from_first_principals/ch_13/hangman/.stack-work/install/x86_64-osx/4bab7ef942a45e6a3b0b4719ffbd830cf5b98e16340bf2150678db5f73d751a8/9.0.2/lib/x86_64-osx-ghc-9.0.2"
+datadir    = "/Users/joshrutta/Desktop/haskell/haskell_from_first_principals/ch_13/hangman/.stack-work/install/x86_64-osx/4bab7ef942a45e6a3b0b4719ffbd830cf5b98e16340bf2150678db5f73d751a8/9.0.2/share/x86_64-osx-ghc-9.0.2/hangman-0.1.0.0"
+libexecdir = "/Users/joshrutta/Desktop/haskell/haskell_from_first_principals/ch_13/hangman/.stack-work/install/x86_64-osx/4bab7ef942a45e6a3b0b4719ffbd830cf5b98e16340bf2150678db5f73d751a8/9.0.2/libexec/x86_64-osx-ghc-9.0.2/hangman-0.1.0.0"
+sysconfdir = "/Users/joshrutta/Desktop/haskell/haskell_from_first_principals/ch_13/hangman/.stack-work/install/x86_64-osx/4bab7ef942a45e6a3b0b4719ffbd830cf5b98e16340bf2150678db5f73d751a8/9.0.2/etc"
 
 getBinDir, getLibDir, getDynLibDir, getDataDir, getLibexecDir, getSysconfDir :: IO FilePath
 getBinDir = catchIO (getEnv "hangman_bindir") (\_ -> return bindir)

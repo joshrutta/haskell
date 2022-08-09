@@ -30,12 +30,12 @@ version :: Version
 version = Version [0,1,0,0] []
 bindir, libdir, dynlibdir, datadir, libexecdir, sysconfdir :: FilePath
 
-bindir     = "/Users/jrutta/Desktop/personal/haskell_programming_from_first_principals/ch_14/test_proj/.stack-work/install/x86_64-osx/2507f8844d22290d26f626c4bf28b0392d0e41e21bdea649df942e2865fdc922/9.0.2/bin"
-libdir     = "/Users/jrutta/Desktop/personal/haskell_programming_from_first_principals/ch_14/test_proj/.stack-work/install/x86_64-osx/2507f8844d22290d26f626c4bf28b0392d0e41e21bdea649df942e2865fdc922/9.0.2/lib/x86_64-osx-ghc-9.0.2/addition-0.1.0.0-6wzEsh5Rda6FZrlvh9j61E"
-dynlibdir  = "/Users/jrutta/Desktop/personal/haskell_programming_from_first_principals/ch_14/test_proj/.stack-work/install/x86_64-osx/2507f8844d22290d26f626c4bf28b0392d0e41e21bdea649df942e2865fdc922/9.0.2/lib/x86_64-osx-ghc-9.0.2"
-datadir    = "/Users/jrutta/Desktop/personal/haskell_programming_from_first_principals/ch_14/test_proj/.stack-work/install/x86_64-osx/2507f8844d22290d26f626c4bf28b0392d0e41e21bdea649df942e2865fdc922/9.0.2/share/x86_64-osx-ghc-9.0.2/addition-0.1.0.0"
-libexecdir = "/Users/jrutta/Desktop/personal/haskell_programming_from_first_principals/ch_14/test_proj/.stack-work/install/x86_64-osx/2507f8844d22290d26f626c4bf28b0392d0e41e21bdea649df942e2865fdc922/9.0.2/libexec/x86_64-osx-ghc-9.0.2/addition-0.1.0.0"
-sysconfdir = "/Users/jrutta/Desktop/personal/haskell_programming_from_first_principals/ch_14/test_proj/.stack-work/install/x86_64-osx/2507f8844d22290d26f626c4bf28b0392d0e41e21bdea649df942e2865fdc922/9.0.2/etc"
+bindir     = "/Users/joshrutta/Desktop/haskell/haskell_from_first_principals/ch_14/test_proj/.stack-work/install/x86_64-osx/1efe2362c875425e3f2b03f81c09b88fb955a0f9bff8da5f2c422018ee1d4a00/9.0.2/bin"
+libdir     = "/Users/joshrutta/Desktop/haskell/haskell_from_first_principals/ch_14/test_proj/.stack-work/install/x86_64-osx/1efe2362c875425e3f2b03f81c09b88fb955a0f9bff8da5f2c422018ee1d4a00/9.0.2/lib/x86_64-osx-ghc-9.0.2/addition-0.1.0.0-6wzEsh5Rda6FZrlvh9j61E"
+dynlibdir  = "/Users/joshrutta/Desktop/haskell/haskell_from_first_principals/ch_14/test_proj/.stack-work/install/x86_64-osx/1efe2362c875425e3f2b03f81c09b88fb955a0f9bff8da5f2c422018ee1d4a00/9.0.2/lib/x86_64-osx-ghc-9.0.2"
+datadir    = "/Users/joshrutta/Desktop/haskell/haskell_from_first_principals/ch_14/test_proj/.stack-work/install/x86_64-osx/1efe2362c875425e3f2b03f81c09b88fb955a0f9bff8da5f2c422018ee1d4a00/9.0.2/share/x86_64-osx-ghc-9.0.2/addition-0.1.0.0"
+libexecdir = "/Users/joshrutta/Desktop/haskell/haskell_from_first_principals/ch_14/test_proj/.stack-work/install/x86_64-osx/1efe2362c875425e3f2b03f81c09b88fb955a0f9bff8da5f2c422018ee1d4a00/9.0.2/libexec/x86_64-osx-ghc-9.0.2/addition-0.1.0.0"
+sysconfdir = "/Users/joshrutta/Desktop/haskell/haskell_from_first_principals/ch_14/test_proj/.stack-work/install/x86_64-osx/1efe2362c875425e3f2b03f81c09b88fb955a0f9bff8da5f2c422018ee1d4a00/9.0.2/etc"
 
 getBinDir, getLibDir, getDynLibDir, getDataDir, getLibexecDir, getSysconfDir :: IO FilePath
 getBinDir = catchIO (getEnv "addition_bindir") (\_ -> return bindir)
