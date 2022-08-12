@@ -1,0 +1,48 @@
+name:                chapter-exercises
+version:             0.1.0.0
+github:              "joshrutta/chapter-exercises"
+license:             BSD3
+author:              "Josh Rutta"
+maintainer:          "joshrutta7@gmail.com"
+copyright:           "(c) Josh Rutta"
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/joshrutta/chapter-exercises#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+
+executables:
+  word-number:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -Wall
+    - -fwarn-tabs
+    dependencies:
+    - chapter-exercises
+
+tests:
+  word-number-test:
+    main:                tests.hs
+    source-dirs:         test
+    ghc-options:
+    - -Wall 
+    - -fno-warn-orphans
+    dependencies:
+    - chapter-exercises
+    - hspec
+    - QuickCheck

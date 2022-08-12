@@ -1,0 +1,64 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.4.
+--
+-- see: https://github.com/sol/hpack
+
+name:           chapter-exercises
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/joshrutta/chapter-exercises#readme>
+homepage:       https://github.com/joshrutta/chapter-exercises#readme
+bug-reports:    https://github.com/joshrutta/chapter-exercises/issues
+author:         Josh Rutta
+maintainer:     joshrutta7@gmail.com
+copyright:      (c) Josh Rutta
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/joshrutta/chapter-exercises
+
+library
+  exposed-modules:
+      WordNumber
+  other-modules:
+      Paths_chapter_exercises
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+  default-language: Haskell2010
+
+executable word-number
+  main-is: Main.hs
+  other-modules:
+      Paths_chapter_exercises
+  hs-source-dirs:
+      app
+  ghc-options: -Wall -fwarn-tabs
+  build-depends:
+      base >=4.7 && <5
+    , chapter-exercises
+  default-language: Haskell2010
+
+test-suite word-number-test
+  type: exitcode-stdio-1.0
+  main-is: tests.hs
+  other-modules:
+      OtherTests
+      WordNumberTest
+      Paths_chapter_exercises
+  hs-source-dirs:
+      test
+  ghc-options: -Wall -fno-warn-orphans
+  build-depends:
+      QuickCheck
+    , base >=4.7 && <5
+    , chapter-exercises
+    , hspec
+  default-language: Haskell2010
